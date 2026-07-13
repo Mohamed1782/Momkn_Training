@@ -15,8 +15,11 @@ pipeline {
 
         stage('Build Docker Image') {
              steps {
-                 dir('jenkins_first_task/app') {
-                     sh 'docker build -t mohamed1782/simplebackendapp:${BUILD_NUMBER} .'
+                    dir('jenkins_first_task/app') {
+                           sh '''
+                            eval $(minikube docker-env)
+                            docker build -t mohamed1782/simplebackendapp:${BUILD_NUMBER} .
+                             '''
         }
     }
 }
