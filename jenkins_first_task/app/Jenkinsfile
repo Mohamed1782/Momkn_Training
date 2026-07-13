@@ -3,8 +3,8 @@ pipeline {
 
     environment {
 
-        IMAGE_NAME = 'mohamed1782/simplebackendapp:test'
-        TAG = "${test}"
+        IMAGE_NAME = 'mohamed1782/simplebackendapp'
+        TAG = "test"
     }
 
     stages {
@@ -32,10 +32,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    // Optional: Push to Docker Hub
-                    // You need to ensure you have docker login configured on the Jenkins agent
-                    // sh "docker push ${IMAGE_NAME}:${TAG}"
-                    // sh "docker push ${IMAGE_NAME}:latest"
+
                     echo "Build successful! Docker image created: ${IMAGE_NAME}:${TAG}"
                 }
             }
@@ -44,7 +41,7 @@ pipeline {
 
     post {
         always {
-            cleanWs() // Clean up the workspace after the job finishes
+            cleanWs() 
         }
     }
-}s
+}
