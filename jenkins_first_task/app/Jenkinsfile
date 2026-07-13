@@ -14,10 +14,14 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t simplebackend:test .'
-            }
+             steps {
+                 dir('jenkins_first_task/app') {
+                     sh 'docker build -t mohamed1782/simplebackendapp:${BUILD_NUMBER} .'
         }
+    }
+}
+
+
 
         stage('Debug Kube Access') {
            steps {
