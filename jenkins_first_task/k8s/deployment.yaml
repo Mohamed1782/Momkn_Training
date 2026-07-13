@@ -1,0 +1,21 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: simplebackend       
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simplebackend
+  template:
+    metadata:
+      labels:
+        app: simplebackend      
+    spec:
+      containers:
+      - name: simplebackendapp 
+        image: simplebackend:latest
+        ports:
+        - containerPort: 3000
+        
