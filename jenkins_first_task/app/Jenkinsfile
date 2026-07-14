@@ -28,10 +28,13 @@ pipeline {
 
         stage('Debug Kube Access') {
            steps {
-             sh 'echo $PATH'
-             sh 'which kubectl || echo "kubectl NOT FOUND"'
-             sh 'which docker || echo "docker NOT FOUND"'
-             sh 'kubectl get nodes || echo "KUBECTL FAILED"'
+                sh 'echo "Running as user: $(whoami)"'
+                sh 'echo "HOME is: $HOME"'
+                sh 'echo $PATH'
+                sh 'which kubectl || echo "kubectl NOT FOUND"'
+                sh 'which docker || echo "docker NOT FOUND"'
+                sh 'kubectl config current-context || echo "NO CONTEXT SET"'
+                sh 'kubectl get nodes || echo "KUBECTL FAILED"'
     }
 }
         

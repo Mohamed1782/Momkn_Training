@@ -16,6 +16,7 @@ spec:
       containers:
       - name: simplebackendapp 
         image: simplebackend:test
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         
